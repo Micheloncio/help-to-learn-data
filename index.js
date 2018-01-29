@@ -6,13 +6,13 @@ const app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
-const wordLogic = new(require('./word/WordLogic'))
+const userWordLogic = new(require('./user-words/UserWordLogic'))
 
-const wordRouter = express.Router()
+const userWordRouter = express.Router()
 
-wordRouter.route('/')
+userWordRouter.route('/')
     .get((req,res)=>{
-        wordLogic.listWords()
+        userWordLogic.listWords()
             .then(words=>{
                 res.json({
                     status: 'OK',
@@ -29,7 +29,7 @@ wordRouter.route('/')
     })
     .post((req,res)=>{
         const {english, spanish, type} = req.body 
-        wordLogic.addWord(english, spanish, type)
+        userWordLogic.addWord(english, spanish, type)
             .then(word=>{
                 res.json({
                     status: 'OK',
@@ -45,7 +45,7 @@ wordRouter.route('/')
             })
     })
 
-app.use('/word', wordRouter)
+app.use('/user-words', userWordRouter)
 
 console.log(`Connecting help-to-learn API db on url ${process.env.DB_URL}`)
 

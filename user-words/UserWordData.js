@@ -1,6 +1,6 @@
-const Word = require('./WordModel')
+const Word = require('./UserWordModel')
 
-class WordData {
+class UserWordData {
 
     listWords(){
         return new Promise((resolve, reject) => {
@@ -29,4 +29,4 @@ class WordData {
     }
 }
 
-module.exports = WordData
+module.exports = UserWordData

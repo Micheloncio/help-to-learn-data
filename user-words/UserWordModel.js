@@ -8,4 +8,4 @@ const WordSchema = new Schema({
         type: String
 })
 
-module.exports = mongoose.model('Word', WordSchema)
+module.exports = mongoose.model('UserWord', WordSchema)
